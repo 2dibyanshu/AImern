@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const metrics = new mongoose.Schema({
     accuracy: { type: Number, required: true },
