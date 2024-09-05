@@ -108,4 +108,44 @@ const addModel = async (req, res) => {
     }
 };
 
-module.exports = { register, login, getUser, addModel };
+const getModels = async (req, res) => {
+    const { email } = req.params;
+    
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ msg: 'User not found' });
+        }
+
+        res.json(user.models.map(model => model.modelName));
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+}
+
+const getModelMetrics = async (req, res) => {
+    const { email, modelName } = req.params;
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ msg: 'User not found' });
+        }
+
+        const model = user.models.find(model => model.modelName === modelName);
+
+        if (!model) {
+            return res.status(404).json({ msg: 'Model not found' });
+        }
+
+        res.json({ modelName: model.modelName, metrics: model.metrics });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+}
+
+module.exports = { register, login, getUser, addModel, getModels, getModelMetrics };
