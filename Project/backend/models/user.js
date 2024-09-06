@@ -5,7 +5,7 @@ const metrics = new mongoose.Schema({
     precision: { type: Number, required: true },
     recall: { type: Number, required: true },
     f1Score: { type: Number, required: true },
-    labels: { type: [String], required: true }
+    specificity: { type: Number, required: true }
 });
 
 const models = new mongoose.Schema({

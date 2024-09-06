@@ -17,8 +17,12 @@ function Dashboard() {
         </header>
 
         <main className='flex flex-wrap justify-evenly mt-20'>
-            <button className='bg-[#E3F4F3] text-[#051937] text-2xl font-semibold px-10 py-2 h-40 w-40 rounded hover:bg-[#051937] hover:text-[#E3F4F3] transition-all hover:border hover:border-[#E3F4F3]'>New Model</button>
-            <button className='bg-[#E3F4F3] text-[#051937] text-2xl font-semibold px-10 py-2 h-40 w-40 rounded hover:bg-[#051937] hover:text-[#E3F4F3] transition-all hover:border hover:border-[#E3F4F3]'>Existing Models</button>
+            <button className='bg-[#E3F4F3] text-[#051937] text-2xl font-semibold px-10 py-2 h-40 w-40 rounded hover:bg-[#051937] hover:text-[#E3F4F3] transition-all hover:border hover:border-[#E3F4F3]' onClick={() => {
+                window.location.href = "/createmodel"
+            }}>New Model</button>
+            <button className='bg-[#E3F4F3] text-[#051937] text-2xl font-semibold px-10 py-2 h-40 w-40 rounded hover:bg-[#051937] hover:text-[#E3F4F3] transition-all hover:border hover:border-[#E3F4F3]' onClick={() => {
+                window.location.href = "/allmodels"
+            }}>Existing Models</button>
         </main>
     </div>
   );

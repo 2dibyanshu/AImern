@@ -15,9 +15,9 @@ const register = async (req, res) => {
         }
 
         user = new User({
-            email,
-            password: await bcrypt.hash(password, 42),
-            name
+            email: email,
+            password: await bcrypt.hash(password, 10),
+            name: name
         });
 
         await user.save();

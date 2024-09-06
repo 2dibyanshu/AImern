@@ -20,8 +20,19 @@ import zipfile
 from PIL import Image
 import json
 from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
+
+#Allow CORS requests
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins for testing (you can restrict this in production)
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods (GET, POST, OPTIONS, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
 
 # Directory to store models
 MODEL_DIR = './stored_models'
@@ -272,6 +283,11 @@ async def train_model(
 
         return {
             "message": "Model trained and saved successfully!",
+            "accuracy": accuracy,
+            "f1score": f1,
+            "recall": recall,
+            "precision": precision,
+            "specificity": specificity,
             "email": email,
             "model_path": m_path,
             "confusion_matrix_path": cm_path,
