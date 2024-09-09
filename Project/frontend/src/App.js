@@ -5,6 +5,8 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import CreateModel from './pages/createModel';
 import AllModels from './pages/allModels';
+import Details from './pages/Details';
+import UseModel from './pages/UseModel';
 
 const App = () => {
     return (
@@ -14,6 +16,8 @@ const App = () => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/createmodel" element={<CreateModel />} />
             <Route path="/allmodels" element={<AllModels />} />
+            <Route path="/modeldetails" element={<Details />} />
+            <Route path="/usemodel" element={<UseModel />} />
             <Route path="/" element={<Login />} />
         </Routes>
     );
